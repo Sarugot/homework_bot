@@ -105,7 +105,7 @@ def main():
     if not check_tokens():
         raise MissingTokensError('Отсутсвуют переменные окружения')
         exit()
-        
+
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
     timestamp = int(time.time())
 
@@ -130,5 +130,6 @@ def main():
         finally:
             time.sleep(RETRY_PERIOD)
 
+            
 if __name__ == '__main__':
     main()
