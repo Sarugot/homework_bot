@@ -79,15 +79,12 @@ def get_api_answer(timestamp):
 
 def check_response(response):
     """Функция проверки типа данных полученного ответа."""
-
     if not isinstance(response, dict):
         logging.error('Неверный тип данных')
         raise TypeError('Неверный тип данных')
-
     if not isinstance(response.get('homeworks'), list):
         logging.error('Неверный тип данных ключа домашнего задания')
         raise TypeError('Неверный тип данных ключа домашнего задания')
-
     return response['homeworks']
 
 
@@ -108,7 +105,7 @@ def main():
     if not check_tokens():
         raise MissingTokensError('Отсутсвуют переменные окружения')
         exit()
-
+        
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
     timestamp = int(time.time())
 
@@ -132,7 +129,6 @@ def main():
                 last_message = message
         finally:
             time.sleep(RETRY_PERIOD)
-
 
 if __name__ == '__main__':
     main()
