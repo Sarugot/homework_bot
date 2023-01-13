@@ -53,8 +53,7 @@ def check_tokens():
             tokens_exist = False
     for token in missing_tokens:
         logging.critical(f'Отсутствует переменная окружения: {token}')
-    if not tokens_exist:
-        raise MissingTokensError('Отсутсвуют переменные окружения')
+    return tokens_exist
 
 
 def send_message(bot, message):
@@ -104,10 +103,8 @@ def parse_status(homework):
 
 def main():
     """Основная логика работы бота."""
-    try:
-        check_tokens()
-    except Exception:
-        exit()
+    if not check_tokens():
+        sys.exit('Отсутсвуют переменные окружения')
 
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
     timestamp = int(time.time())
