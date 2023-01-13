@@ -8,7 +8,7 @@ import time
 from http import HTTPStatus
 from dotenv import load_dotenv
 
-from exceptions import MissingTokensError, StatusCodeError, HomeworkError
+from exceptions import StatusCodeError, HomeworkError
 from exceptions import StatusError
 
 import telegram
